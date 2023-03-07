@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	@apply outline-none;
+}
+
+:focus {
+	@apply ring-4 ring-indigo-500/50 transition-shadow duration-150;
+}
+
+::selection {
+	@apply bg-indigo-400/40 text-zinc-50;
+}
+
+:is(html, body) {
+	@apply w-full h-auto min-h-screen;
+}
+
+body {
+	@apply bg-zinc-900 text-zinc-50;
+}
