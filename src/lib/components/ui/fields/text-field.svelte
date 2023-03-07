@@ -7,9 +7,9 @@
 	export let placeholder: string;
 	export let type: 'text' | 'email' = 'text';
 	export let value: string;
-	export let required: boolean = false;
-	export let disabled: boolean = false;
-	export let error: string = '';
+	export let required = false;
+	export let disabled = false;
+	export let error = '';
 
 	const onInput = (event: Event) => {
 		value = (event.target as HTMLInputElement).value;

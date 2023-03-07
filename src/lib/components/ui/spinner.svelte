@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from '~/lib/utils/cn';
 
-	let className: string = '';
+	let className = '';
 
 	export { className as class };
 </script>
