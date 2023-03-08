@@ -5,8 +5,7 @@ export const AuthService = {
 };
 
 async function signIn(credentials: { email: string; password: string }) {
-	console.log('antes');
-	const response = await fetch('http://localhost:5173/sign-in', {
+	const response = await fetch('/sign-in', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -25,7 +24,7 @@ async function signIn(credentials: { email: string; password: string }) {
 }
 
 async function logout() {
-	const response = await fetch('http://localhost:5173/api/logout');
+	const response = await fetch('/api/logout');
 
 	if (response.ok) {
 		localStorage.removeItem('user');
@@ -38,7 +37,7 @@ async function signUp(data: {
 	password: string;
 	confirmPassword: string;
 }) {
-	const response = await fetch('http://localhost:5173/sign-up', {
+	const response = await fetch('/sign-up', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -57,7 +56,7 @@ async function signUp(data: {
 }
 
 async function getUser() {
-	const response = await fetch('http://localhost:5173/');
+	const response = await fetch('/user');
 
 	if (response.ok) {
 		const { user } = await response.json();
