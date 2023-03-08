@@ -96,8 +96,8 @@
 			{/if}
 		</button>
 		<p class="text-sm text-zinc-400 text-center col-span-6">
-			Don't have an account? <a
-				href="/sign-up"
+			Already have an account? <a
+				href="/sign-in"
 				class="text-indigo-300 underline underline-offset-2"
 			>
 				Sign in
