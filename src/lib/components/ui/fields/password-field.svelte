@@ -11,6 +11,7 @@
 	export let required = false;
 	export let disabled = false;
 	export let error = '';
+	let className = '';
 
 	const onInput = (event: Event) => {
 		value = (event.target as HTMLInputElement).value;
@@ -19,9 +20,11 @@
 	const toggleType = () => {
 		type = type === 'password' ? 'text' : 'password';
 	};
+
+	export { className as class };
 </script>
 
-<fieldset class="flex flex-col gap-1 relative">
+<fieldset class={cn('flex flex-col gap-1 relative', className)}>
 	{#if label}
 		<label for="" class="text-sm font-medium text-zinc-400">{label}</label>
 	{/if}
@@ -44,7 +47,7 @@
 			on:change
 			on:keyup
 			on:blur
-			class="w-full bg-transparent pl-2 focus:ring-0 pr-2"
+			class="w-full bg-transparent pl-2 focus:ring-0 pr-2 placeholder:text-zinc-500"
 		/>
 		<button
 			type="button"

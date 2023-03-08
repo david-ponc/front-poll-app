@@ -18,6 +18,7 @@ export const load = (async ({ cookies, fetch }) => {
 	}
 
 	return {
-		user
+		user,
+		token
 	};
 }) satisfies LayoutServerLoad;

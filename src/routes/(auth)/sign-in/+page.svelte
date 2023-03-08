@@ -10,6 +10,7 @@
 	import { AuthService } from '~/servicies/auth.service';
 
 	let loading = false;
+	let globalError = '';
 
 	const { form, errors, isValid, handleSubmit, handleChange } = createForm({
 		initialValues: { email: 'test@mail.com', password: 'qwerty123456' },
@@ -18,6 +19,7 @@
 			AuthService.signIn(values)
 				.then((userInfo) => user.set(userInfo))
 				.then(() => invalidateAll())
+				.catch((err) => (globalError = err.message))
 				.finally(() => (loading = false));
 		},
 		validationSchema: yup.object().shape({
@@ -36,7 +38,7 @@
 		on:submit={handleSubmit}
 		class={cn(
 			'bg-zinc-800 p-8 rounded-2xl flex flex-col gap-3 shadow-2xl border border-zinc-700/40 w-full max-w-sm',
-			!$isValid ? 'shadow-rose-600/10' : 'shadow-indigo-600/10'
+			!$isValid || globalError ? 'shadow-rose-600/10' : 'shadow-indigo-600/10'
 		)}
 	>
 		<h1
@@ -44,6 +46,9 @@
 		>
 			Sign in to your account
 		</h1>
+		{#if globalError}
+			<p class="text-sm text-rose-400 text-center col-span-6">{globalError}</p>
+		{/if}
 		<TextField
 			name="email"
 			label="Email address"

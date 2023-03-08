@@ -2,20 +2,13 @@
 	import { fly } from 'svelte/transition';
 	import { cn } from '~/lib/utils/cn';
 
-	export let name = '';
+	export let name: string;
 	export let label = '';
-	export let placeholder = '';
-	export let type: 'text' | 'email' = 'text';
 	export let value = '';
 	export let required = false;
 	export let disabled = false;
 	export let error = '';
-	export let size: 'sm' | 'md' = 'md';
 	let className = '';
-
-	const onInput = (event: Event) => {
-		value = (event.target as HTMLInputElement).value;
-	};
 
 	export { className as class };
 </script>
@@ -30,23 +23,17 @@
 			)}>{label}</label
 		>
 	{/if}
-	<input
+	<select
 		{name}
-		{type}
-		{value}
-		{placeholder}
-		{required}
 		{disabled}
-		on:input={onInput}
-		on:change
-		on:keyup
-		on:blur
+		bind:value
 		class={cn(
-			'w-full rounded-lg bg-black/30 border placeholder:text-zinc-500',
-			size === 'sm' ? 'text-sm py-2 px-4' : 'text-base px-4 py-3',
-			error ? 'bg-rose-900/10 border-rose-500/50 focus:ring-rose-500/20' : 'border-transparent'
+			'w-full col-span-6 px-4 py-3 rounded-lg bg-black/30 outline-none',
+			value ? 'text-zinc-50' : 'text-zinc-500'
 		)}
-	/>
+	>
+		<slot />
+	</select>
 	{#if error}
 		<span transition:fly|local={{ y: -5 }} class="pl-3 text-sm text-rose-400">{error}</span>
 	{/if}
