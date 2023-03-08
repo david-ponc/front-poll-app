@@ -13,7 +13,7 @@
 	let globalError = '';
 
 	const { form, errors, isValid, handleSubmit, handleChange } = createForm({
-		initialValues: { email: 'test@mail.com', password: 'qwerty123456' },
+		initialValues: { email: '', password: '' },
 		onSubmit: (values) => {
 			loading = true;
 			AuthService.signIn(values)

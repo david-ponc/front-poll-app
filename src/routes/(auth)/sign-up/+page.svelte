@@ -100,7 +100,7 @@
 				href="/sign-up"
 				class="text-indigo-300 underline underline-offset-2"
 			>
-				Sign up
+				Sign in
 			</a>
 		</p>
 	</form>
