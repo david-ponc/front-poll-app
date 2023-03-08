@@ -12,7 +12,15 @@ export const POST = (async ({ request, cookies, fetch }) => {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${token}`
 		},
-		body: JSON.stringify({ title: question, description, duration, options })
+		body: JSON.stringify({
+			title: question,
+			description,
+			duration,
+			options,
+			anonymous_poll: true,
+			public_poll: true,
+			public_result: true
+		})
 	});
 
 	if (!response.ok) {
