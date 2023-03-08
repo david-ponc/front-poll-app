@@ -2,15 +2,13 @@ import { API_URL } from '$env/static/private';
 import type { ApiPoll, Poll } from '~/types';
 import type { PageServerLoad } from './$types';
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, fetch }) => {
 	const { id } = params;
 	const response = await fetch(`${API_URL}/polls/${id}`);
 
 	const data = await response.json();
 
 	const poll = apiPollToPoll(data);
-
-	console.log(poll);
 
 	return { poll };
 }) satisfies PageServerLoad;

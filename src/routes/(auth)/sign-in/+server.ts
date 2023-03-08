@@ -3,7 +3,7 @@ import { authDataToUser } from '~/lib/adapters/auth-data-to-user';
 import type { AuthDataResponse } from '~/types';
 import type { RequestHandler } from './$types';
 
-export const POST = (async ({ request, cookies }) => {
+export const POST = (async ({ request, cookies, fetch }) => {
 	const { email, password } = await request.json();
 
 	const response = await fetch(`${API_URL}/login`, {
